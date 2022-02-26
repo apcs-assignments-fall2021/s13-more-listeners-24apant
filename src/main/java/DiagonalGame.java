@@ -18,6 +18,8 @@ public class DiagonalGame {
     JFrame frame;
     JPanel panel1;
     JTextField field1;
+    int[] firstClick, secondClick;
+
 
     public DiagonalGame() {
         // Set up the frame
@@ -28,7 +30,8 @@ public class DiagonalGame {
         panel1 = new JPanel();
         panel1.setPreferredSize(new Dimension(500,500));
         frame.add(panel1, BorderLayout.NORTH);
-
+        firstClick = new int[2];
+        secondClick = new int[2];
         field1 = new JTextField();
         frame.add(field1, BorderLayout.SOUTH);
 
@@ -41,7 +44,26 @@ public class DiagonalGame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                int diagDist = Math.abs(e.getX() - e.getY());
+                if(diagDist > 50){
+                    field1.setText("Bad!");
+                }
+                else if (diagDist > 20){
+                    field1.setText("Okay!");
+                }
+                else if (diagDist > 10){
+                    field1.setText("Good!");
+                }
+                else if (diagDist > 5){
+                    field1.setText("Excellent!");
+                }
+                else if (diagDist > 0){
+                    field1.setText("Almost Perfect!");
+                }
+                else{
+                    field1.setText("Perfect! ");
+                }
+                field1.setText(field1.getText() + "  X: " + e.getX() + ", Y: " + e.getY());
             }
 
             @Override

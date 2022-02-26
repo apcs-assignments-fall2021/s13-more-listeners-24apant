@@ -50,6 +50,7 @@ public class MouseListenerDemo {
         });
 
         // pack and show
+
         frame.pack();
         frame.setVisible(true);
     }
